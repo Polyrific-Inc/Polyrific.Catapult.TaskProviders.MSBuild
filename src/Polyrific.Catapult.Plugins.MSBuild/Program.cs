@@ -30,11 +30,11 @@ namespace Polyrific.Catapult.Plugins.MSBuild
             if (!Path.IsPathRooted(slnLocation))
                 slnLocation = Path.Combine(Config.WorkingLocation, slnLocation);
 
-            var csprojLocation = Path.Combine(Config.SourceLocation ?? Config.WorkingLocation, ProjectName, $"{ProjectName}.csproj");
+            var csprojLocation = Path.Combine(Path.GetDirectoryName(slnLocation), ProjectName, $"{ProjectName}.csproj");
             if (AdditionalConfigs != null && AdditionalConfigs.ContainsKey("CsprojLocation") && !string.IsNullOrEmpty(AdditionalConfigs["CsprojLocation"]))
                 csprojLocation = AdditionalConfigs["CsprojLocation"];
             if (!Path.IsPathRooted(csprojLocation))
-                csprojLocation = Path.Combine(slnLocation, csprojLocation);
+                csprojLocation = Path.Combine(Path.GetDirectoryName(slnLocation), csprojLocation);
 
             var buildConfiguration = "Release";
             if (AdditionalConfigs != null && AdditionalConfigs.ContainsKey("Configuration") && !string.IsNullOrEmpty(AdditionalConfigs["Configuration"]))
