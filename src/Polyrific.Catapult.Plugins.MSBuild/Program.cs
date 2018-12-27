@@ -1,12 +1,11 @@
 ﻿// Copyright (c) Polyrific, Inc 2018. All rights reserved.
 
 using Polyrific.Catapult.Plugins.Core;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace Polyrific.Catapult.Plugins.MsBuild
+namespace Polyrific.Catapult.Plugins.MSBuild
 {
     public class Program : BuildProvider
     {

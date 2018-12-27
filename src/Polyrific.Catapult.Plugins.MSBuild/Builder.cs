@@ -8,7 +8,7 @@ using System.IO.Compression;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace Polyrific.Catapult.Plugins.MsBuild
+namespace Polyrific.Catapult.Plugins.MSBuild
 {
     public class Builder : IBuilder
     {
@@ -39,14 +39,14 @@ namespace Polyrific.Catapult.Plugins.MsBuild
             var restoreResult = await ExecuteNugetRestore(slnLocation);
             _logger.LogDebug(restoreResult);
 
-            if (string.IsNullOrEmpty(restoreResult))
+            if (!string.IsNullOrEmpty(restoreResult))
                 return restoreResult;
 
-            var res = await ExecuteMsBuild(slnLocation, buildOutputLocation);
+            var buildResult = await ExecuteMsBuild(slnLocation, buildOutputLocation, configuration);
 
-            if (res.Contains("Build FAILED"))
+            if (!string.IsNullOrEmpty(buildResult))
             {
-                return "Build failed.";
+                return buildResult;
             }
 
             return "";
@@ -81,10 +81,10 @@ namespace Polyrific.Catapult.Plugins.MsBuild
             return Task.FromResult(errorMessage);
         }
         
-        private async Task<string> ExecuteMsBuild(string solutionFile, string buildFolder)
+        private async Task<string> ExecuteMsBuild(string solutionFile, string buildFolder, string configuration)
         {
             _logger.LogDebug("Running MsBuild.exe");
-            var args = $@"msbuild ""{solutionFile}"" /p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation=""{buildFolder}\\"" /p:Platform=""any cpu"" /p:Configuration=release";
+            var args = $@"msbuild ""{solutionFile}"" /p:OutputPath=""{buildFolder}"" /p:Configuration={configuration}";
 
             return (await CommandHelper.Execute("dotnet", args, _logger)).error;
         }

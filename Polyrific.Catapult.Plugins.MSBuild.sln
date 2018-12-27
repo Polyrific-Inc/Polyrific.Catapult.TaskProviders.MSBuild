@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{4A451222
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Polyrific.Catapult.Plugins.MSBuild", "src\Polyrific.Catapult.Plugins.MSBuild\Polyrific.Catapult.Plugins.MSBuild.csproj", "{FFC5859C-3695-45C1-B246-EC7EE300DA38}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Polyrific.Catapult.Plugins.MSBuild.UnitTests", "tests\Polyrific.Catapult.Plugins.MSBuild.UnitTests\Polyrific.Catapult.Plugins.MSBuild.UnitTests.csproj", "{9DC66171-0D1E-4BEE-A654-DA3786ED32EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,12 +21,17 @@ Global
 		{FFC5859C-3695-45C1-B246-EC7EE300DA38}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFC5859C-3695-45C1-B246-EC7EE300DA38}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFC5859C-3695-45C1-B246-EC7EE300DA38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DC66171-0D1E-4BEE-A654-DA3786ED32EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DC66171-0D1E-4BEE-A654-DA3786ED32EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DC66171-0D1E-4BEE-A654-DA3786ED32EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DC66171-0D1E-4BEE-A654-DA3786ED32EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{FFC5859C-3695-45C1-B246-EC7EE300DA38} = {198CCBB9-7C92-468A-A77E-C2B42BD1F632}
+		{9DC66171-0D1E-4BEE-A654-DA3786ED32EA} = {4A451222-0C2C-4F36-AD9B-8C6CFCA15857}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EE59C0F9-6E0B-4F7E-8619-ABAEC07EF7CF}
