@@ -12,6 +12,8 @@ namespace Polyrific.Catapult.Plugins.MSBuild
 {
     public class Builder : IBuilder
     {
+        private const string DefaultMsBuildLocation = @"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\msbuild.exe";
+
         private static string AssemblyDirectory
         {
             get
@@ -32,7 +34,7 @@ namespace Polyrific.Catapult.Plugins.MSBuild
             _logger = logger;
         }
 
-        public async Task<string> Build(string slnLocation, string buildOutputLocation, string configuration = "Debug")
+        public async Task<string> Build(string slnLocation, string csprojLocation, string buildOutputLocation, string configuration = "Debug", string msBuildLocation = null)
         {
             _logger.LogInformation("Building artifact using MS Build.");
 
@@ -42,7 +44,7 @@ namespace Polyrific.Catapult.Plugins.MSBuild
             if (!string.IsNullOrEmpty(restoreResult))
                 return restoreResult;
 
-            var buildResult = await ExecuteMsBuild(slnLocation, buildOutputLocation, configuration);
+            var buildResult = await ExecuteMsBuild(slnLocation, csprojLocation, buildOutputLocation, configuration, msBuildLocation);
 
             if (!string.IsNullOrEmpty(buildResult))
             {
@@ -81,18 +83,21 @@ namespace Polyrific.Catapult.Plugins.MSBuild
             return Task.FromResult(errorMessage);
         }
         
-        private async Task<string> ExecuteMsBuild(string solutionFile, string buildFolder, string configuration)
+        private async Task<string> ExecuteMsBuild(string solutionLocation, string csprojLocation, string buildFolder, string configuration, string msBuildLocation)
         {
             _logger.LogDebug("Running MsBuild.exe");
-            var args = $@"msbuild ""{solutionFile}"" /p:OutputPath=""{buildFolder}"" /p:Configuration={configuration}";
+            
+            Directory.CreateDirectory(buildFolder);
 
-            return (await CommandHelper.Execute("dotnet", args, _logger)).error;
+            var args = $@"""{csprojLocation}"" /p:DeployOnBuild=true /p:WebPublishMethod=FileSystem /p:DeployDefaultTarget=WebPublish /p:SkipInvalidConfigurations=true /p:publishUrl=""{buildFolder}\\"" /p:Configuration={configuration} /p:SolutionDir=""{Path.GetDirectoryName(solutionLocation)}""";
+
+            return (await CommandHelper.Execute(msBuildLocation ?? DefaultMsBuildLocation, args, _logger)).error;
         }
 
         private async Task<string> ExecuteNugetRestore(string solutionFile)
         {
             _logger.LogDebug("Restoring Nuget Packages");
-            var args = $"restore {solutionFile}";
+            var args = $"restore \"{solutionFile}\"";
 
             var nugetLocation = Path.Combine(AssemblyDirectory, "Tools/nuget.exe");
             return (await CommandHelper.Execute(nugetLocation, args, _logger)).error;
