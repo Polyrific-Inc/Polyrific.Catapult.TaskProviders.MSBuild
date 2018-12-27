@@ -11,7 +11,7 @@ namespace Polyrific.Catapult.Plugins.MSBuild
     {
         private readonly IBuilder _builder;
 
-        public override string Name => "Polyrific.Catapult.Plugins.MsBuild";
+        public override string Name => "Polyrific.Catapult.Plugins.MSBuild";
 
         public Program() : base(new string[0])
         {
