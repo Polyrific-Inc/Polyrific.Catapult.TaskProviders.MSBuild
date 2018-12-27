@@ -89,7 +89,7 @@ namespace Polyrific.Catapult.Plugins.MSBuild
             
             Directory.CreateDirectory(buildFolder);
 
-            var args = $@"""{csprojLocation}"" /p:DeployOnBuild=true /p:WebPublishMethod=FileSystem /p:DeployDefaultTarget=WebPublish /p:SkipInvalidConfigurations=true /p:publishUrl=""{buildFolder}\\"" /p:Configuration={configuration} /p:SolutionDir=""{Path.GetDirectoryName(solutionLocation)}""";
+            var args = $@"""{csprojLocation}"" /p:DeployOnBuild=true /p:WebPublishMethod=FileSystem /p:DeployDefaultTarget=WebPublish /p:SkipInvalidConfigurations=true /p:publishUrl=""{buildFolder}\\"" /p:Configuration={configuration} /p:SolutionDir=""{Path.GetDirectoryName(solutionLocation)}\\""";
 
             return (await CommandHelper.Execute(msBuildLocation ?? DefaultMsBuildLocation, args, _logger)).error;
         }
@@ -100,7 +100,12 @@ namespace Polyrific.Catapult.Plugins.MSBuild
             var args = $"restore \"{solutionFile}\"";
 
             var nugetLocation = Path.Combine(AssemblyDirectory, "Tools/nuget.exe");
-            return (await CommandHelper.Execute(nugetLocation, args, _logger)).error;
+            var result = (await CommandHelper.Execute(nugetLocation, args, _logger));
+
+            if (result.output.Contains("Build FAILED."))
+                return "Build failed";
+
+            return result.error;
         }
     }
 }
