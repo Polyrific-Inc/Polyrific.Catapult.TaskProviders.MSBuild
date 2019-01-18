@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Polyrific.Catapult.Plugins.Core" Version="2018.12.27.2" />
+    <PackageReference Include="Polyrific.Catapult.Plugins.Core" Version="1.0.0-beta1-15222" />
   </ItemGroup>
 
 </Project>
