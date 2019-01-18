@@ -9,15 +9,17 @@ namespace Polyrific.Catapult.Plugins.MSBuild
 {
     public class Program : BuildProvider
     {
+        private const string TaskProviderName = "Polyrific.Catapult.Plugins.MSBuild";
+
         private readonly IBuilder _builder;
 
-        public override string Name => "Polyrific.Catapult.Plugins.MSBuild";
+        public override string Name => TaskProviderName;
 
-        public Program() : base(new string[0])
+        public Program() : base(new string[0], TaskProviderName)
         {
         }
 
-        public Program(string[] args) : base(args)
+        public Program(string[] args) : base(args, TaskProviderName)
         {
             _builder = new Builder(Logger);
         }
