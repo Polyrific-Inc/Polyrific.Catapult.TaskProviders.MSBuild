@@ -1,13 +1,13 @@
 using Newtonsoft.Json;
-using Polyrific.Catapult.Plugins.Core.Configs;
-using Polyrific.Catapult.Plugins.MSBuild.Helpers;
+using Polyrific.Catapult.TaskProviders.Core.Configs;
+using Polyrific.Catapult.TaskProviders.MSBuild.Helpers;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Polyrific.Catapult.Plugins.MSBuild.UnitTests
+namespace Polyrific.Catapult.TaskProviders.MSBuild.UnitTests
 {
     public class BuildProviderTests
     {

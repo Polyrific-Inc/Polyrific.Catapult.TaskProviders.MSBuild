@@ -1,14 +1,14 @@
 ﻿// Copyright (c) Polyrific, Inc 2018. All rights reserved.
 
 using Microsoft.Extensions.Logging;
-using Polyrific.Catapult.Plugins.MSBuild.Helpers;
+using Polyrific.Catapult.TaskProviders.MSBuild.Helpers;
 using System;
 using System.IO;
 using System.IO.Compression;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace Polyrific.Catapult.Plugins.MSBuild
+namespace Polyrific.Catapult.TaskProviders.MSBuild
 {
     public class Builder : IBuilder
     {
