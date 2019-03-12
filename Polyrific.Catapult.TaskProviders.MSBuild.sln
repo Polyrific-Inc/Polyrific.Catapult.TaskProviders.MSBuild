@@ -7,9 +7,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{198CCBB9-7C9
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{4A451222-0C2C-4F36-AD9B-8C6CFCA15857}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Polyrific.Catapult.Plugins.MSBuild", "src\Polyrific.Catapult.Plugins.MSBuild\Polyrific.Catapult.Plugins.MSBuild.csproj", "{FFC5859C-3695-45C1-B246-EC7EE300DA38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Polyrific.Catapult.TaskProviders.MSBuild", "src\Polyrific.Catapult.TaskProviders.MSBuild\Polyrific.Catapult.TaskProviders.MSBuild.csproj", "{FFC5859C-3695-45C1-B246-EC7EE300DA38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Polyrific.Catapult.Plugins.MSBuild.UnitTests", "tests\Polyrific.Catapult.Plugins.MSBuild.UnitTests\Polyrific.Catapult.Plugins.MSBuild.UnitTests.csproj", "{9DC66171-0D1E-4BEE-A654-DA3786ED32EA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Polyrific.Catapult.TaskProviders.MSBuild.UnitTests", "tests\Polyrific.Catapult.TaskProviders.MSBuild.UnitTests\Polyrific.Catapult.TaskProviders.MSBuild.UnitTests.csproj", "{9DC66171-0D1E-4BEE-A654-DA3786ED32EA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

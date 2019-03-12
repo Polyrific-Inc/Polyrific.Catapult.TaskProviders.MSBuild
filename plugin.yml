@@ -1,4 +1,4 @@
-name: 'Polyrific.Catapult.Plugins.MSBuild'
+name: 'Polyrific.Catapult.TaskProviders.MSBuild'
 type: 'BuildProvider'
 author: 'Polyrific'
 version: '1.0'

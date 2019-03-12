@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Polyrific.Catapult.Plugins.MSBuild.Helpers
+namespace Polyrific.Catapult.TaskProviders.MSBuild.Helpers
 {
     public class CommandHelper
     {

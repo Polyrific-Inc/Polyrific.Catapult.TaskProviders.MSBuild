@@ -1,25 +1,21 @@
 ﻿// Copyright (c) Polyrific, Inc 2018. All rights reserved.
 
-using Polyrific.Catapult.Plugins.Core;
+using Polyrific.Catapult.TaskProviders.Core;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace Polyrific.Catapult.Plugins.MSBuild
+namespace Polyrific.Catapult.TaskProviders.MSBuild
 {
     public class Program : BuildProvider
     {
-        private const string TaskProviderName = "Polyrific.Catapult.Plugins.MSBuild";
+        private const string TaskProviderName = "Polyrific.Catapult.TaskProviders.MSBuild";
 
         private readonly IBuilder _builder;
 
         public override string Name => TaskProviderName;
 
-        public Program() : base(new string[0], TaskProviderName)
-        {
-        }
-
-        public Program(string[] args) : base(args, TaskProviderName)
+        public Program(string[] args) : base(args)
         {
             _builder = new Builder(Logger);
         }
